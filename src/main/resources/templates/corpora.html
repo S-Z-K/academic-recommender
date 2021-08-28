@@ -80,18 +80,22 @@
             </div>
             <div id="word" hidden>
                 <div id="word-header">
-                    <img src="../static/images/hide-tags-icon.svg" th:src="@{images/hide-tags-icon.svg}">
-                    <img src="../static/images/toggle-tag-markup-icon.svg" th:src="@{images/toggle-tag-markup-icon.svg}" hidden>
-                    <img src="../static/images/zoom-in-icon.svg" th:src="@{images/zoom-in-icon.svg}">
-                    <img src="../static/images/zoom-out-icon.svg" th:src="@{images/zoom-out-icon.svg}">
-                    <img src="../static/images/save-all-icon.svg" th:src="@{images/save-all-icon.svg}" hidden>
-                    <img src="../static/images/expand-icon.svg" th:src="@{images/expand-icon.svg}" hidden>
+                        <img src="../static/images/bar-chart-icon.svg" th:src="@{images/bar-chart-icon.svg}" role="button" onclick="documentsView.countCorpusMarkers()">
+                        <img src="../static/images/xlsx-file-format-extension-icon.svg" th:src="@{images/xlsx-file-format-extension-icon.svg}" role="button" onclick="documentsView.downloadExcel()">
+                        <img src="../static/images/line-chart-icon.svg" th:src="@{images/line-chart-icon.svg}">
+                        <img src="../static/images/hide-tags-icon.svg" th:src="@{images/hide-tags-icon.svg}">
+                        <img src="../static/images/toggle-tag-markup-icon.svg" th:src="@{images/toggle-tag-markup-icon.svg}" hidden>
+                        <img src="../static/images/zoom-in-icon.svg" th:src="@{images/zoom-in-icon.svg}">
+                        <img src="../static/images/zoom-out-icon.svg" th:src="@{images/zoom-out-icon.svg}">
+                        <img src="../static/images/save-all-icon.svg" th:src="@{images/save-all-icon.svg}" hidden>
+                        <img src="../static/images/expand-icon.svg" th:src="@{images/expand-icon.svg}" hidden>
                 </div>
                 <div id="word-body">
 
                 </div>
             </div>
         </article>
+
         <div id="sidebar">
             <div id="sidebar-header">
                 <h2>Типы разметки</h2>
@@ -116,6 +120,8 @@
         </div>
     </div-->
 
+    <div id="snackbar">Отчет Excel успешно загружен в папку Downloads</div>
+
     <div hidden>
         <!-- Document item template -->
         <div id="document-template" class="document document-row">
@@ -132,7 +138,6 @@
         </div>
     </div>
     <script>
-        // const corporaView = new CorporaView();
         const documentsView = new DocumentsView();
     </script>
 </body>

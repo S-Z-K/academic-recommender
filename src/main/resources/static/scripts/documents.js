@@ -6,7 +6,9 @@ class DocumentsView extends View {
 
         this.documentList = new ItemList('document');
         this.annotationList = new ItemList('annotation');
-        /* this.markerList = new ItemList('marker'); */
+        ///markerList was commented
+        this.markerList = new ItemList('marker');
+        this.statisticsList = new ItemList('statistics');
 
         this.currentDocument = -1;
 
@@ -14,6 +16,7 @@ class DocumentsView extends View {
         this.documents = [];
         this.annotations = [];
         this.markers = [];
+        this.statistics = [];
 
         // this.fetchDocuments();
 
@@ -26,7 +29,7 @@ class DocumentsView extends View {
         ).onclick = () => this._documentModal.show(); */
     }
 
-    set colorizedHtml(value = '') {
+    set colorizedHtml(value) {
         this.colorizedTextBlock.innerHTML = value;
     }
 
@@ -36,6 +39,10 @@ class DocumentsView extends View {
         document.querySelector('#document-details').hidden = false;
 
         this.fetchDocuments();
+
+        this.fetchDocumentsStatistics();
+
+        //функция подсчета статистик
     }
 
     setAnnotation(index, value) {
@@ -224,7 +231,8 @@ class DocumentsView extends View {
                     }
                 );
 
-                /* this.updateLists('markers', 'markerList', reply.annotationList).forEach(
+                ///the part below was commented------------------------------------------------------
+                this.updateLists('markers', 'markerList', reply.annotationList).forEach(
                     (cur, idx) => {
                         const contents = cur.extras.content;
                         const marker = reply.annotationList[idx];
@@ -233,7 +241,8 @@ class DocumentsView extends View {
                         contents[1].textContent = marker.startNode;
                         contents[2].textContent = marker.endNode;
                     }
-                ); */
+                );
+                ///till here-------------------------------------------------------------------------
             },
             err => alert('Failed to fetch the document text: ' + err.message) 
         ).finally(
@@ -273,4 +282,29 @@ class DocumentsView extends View {
             }
         );
     }
+
+    countCorpusMarkers(){
+        window.open('/statistics/'+this._corpus.id, '_new');
+    }
+
+    popupMessage() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      }
+
+    downloadExcel(){
+        getRequest(
+            '/download_Excel',
+            { corpusId: this._corpus.id }
+            ).then(
+                this.popupMessage()
+                );
+    }
+
 }

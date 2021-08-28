@@ -65,7 +65,7 @@ public class DocumentApiController {
         var content = "Hi, I'm a native speaker. I will try to do my best";
 
         corpusService.createAndAddDocument(
-                new DocumentDto(corpus.getId(), "BLACK SIEMENS", content)
+                new DocumentDto(corpus.getId(), "BLACK SIEMENS", content, Document.getDate())
         );
     }
 }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Academic Writing Analysis Application</title>
+    <link href="../static/css/design.css" th:href="@{css/design.css}" rel="stylesheet">
+    <link href="../static/css/annotations.css" th:href="@{css/annotations.css}" rel="stylesheet">
+</head>
+<body style="font-family: 'Open Sans', sans-serif; font:lighter">
+    <h1 style="color:rgb(71, 92, 150)">Статистика по маркерам корпуса</h1>
+    <br>
+    <div th:if="${not #lists.isEmpty(statistics.annotations)}">
+        <div th:each="statistic : ${statistics.annotations}">
+            <h2 style="color:rgb(71, 92, 150)" th:text="${statistic.name}"></h2>
+            <table class="table table-striped" style="font-weight:700" cellpadding="10" rules="all" border = "1" bgcolor="#d4ddff">
+                    <tr>
+                        <div th:each="document: ${documentsNames}">
+                            <td th:text="${document}"></td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div th:each="freq: ${statistic.frequency}">
+                            <td th:text="${freq}"></td>
+                        </div>
+                    </tr>                                    
+                <tr></tr>
+            </table>
+            <br>
+            <table class="table table-striped">
+                <tr style="font-weight:700">
+                    <td>Статистический показатель</th>
+                    <td>Значение</th>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>Среднее выборочное</td>
+                    <td th:text="${statistic.count[0]}"></td>
+                </tr>
+                <tr>
+                    <td>Мода</td>
+                    <td th:text="${statistic.count[1]}"></td>
+                </tr>
+                <tr>
+                    <td>Медиана</td>
+                    <td th:text="${statistic.count[2]}"></td>
+                </tr>
+                <tr>
+                    <td>Дисперсия</td>
+                    <td th:text="${statistic.count[3]}"></td>
+                </tr>
+                <tr>
+                    <td>Среднеквадратичное отклонение</td>
+                    <td th:text="${statistic.count[4]}"></td>
+                </tr>
+                <tr>
+                    <td>Коэффициент вариации, %</td>
+                    <div th:if="${statistic.count[5] == 0.7777}">
+                        <td>-</td>
+                    </div>
+                    <div th:unless="${statistic.count[5] == 0.7777}">
+                        <td th:text="${statistic.count[5]}"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <td>Коэффициент асимметрии</td>
+                    <div th:if="${statistic.count[6] == 0.7777}">
+                        <td>-</td>
+                    </div>
+                    <div th:unless="${statistic.count[6] == 0.7777}">
+                        <td th:text="${statistic.count[6]}"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <td>Эксцесс</td>
+                    <div th:if="${statistic.count[7] == 0.7777}">
+                        <td>-</td>
+                    </div>
+                    <div th:unless="${statistic.count[7] == 0.7777}">
+                        <td th:text="${statistic.count[7]}"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <td>Минимальное значение</td>
+                    <td th:text="${statistic.count[8]}"></td>
+                </tr>
+                <tr>
+                    <td>Квартиль 0.25</td>
+                    <td th:text="${statistic.count[9]}"></td>
+                </tr>
+                <tr>    
+                    <td>Квартиль 0.5</td>
+                    <td th:text="${statistic.count[10]}"></td>
+                </tr>
+                <tr> 
+                    <td>Квартиль 0.75</td>
+                    <td th:text="${statistic.count[11]}"></td>
+                </tr>
+                <tr> 
+                    <td>Максимальное значение</td>
+                    <td th:text="${statistic.count[12]}"></td>
+                </tr>
+                <tr>            
+                    <td>Интерквартильный размах</td>
+                    <td th:text="${statistic.count[13]}"></td>  
+                </tr>
+            </table>
+            <br>
+        </div>
+    </div>
+</body>

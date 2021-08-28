@@ -80,9 +80,9 @@ class DocumentApiControllerTests {
 	private CorpusService service;
 
 	public static final List<DocumentDto> documentDtos = Arrays.asList(
-			new DocumentDto("", "fst", "1234"),
-			new DocumentDto("", "snd", "2435"),
-			new DocumentDto("", "trd", "3456")
+			new DocumentDto("", "fst", "1234", "13.04.2021"),
+			new DocumentDto("", "snd", "2435", "09.05.2020"),
+			new DocumentDto("", "trd", "3456", "07.07.2019")
 	);
 	public static final Document document = new Document(documentDtos.get(0));
 
