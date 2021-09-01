@@ -41,8 +41,6 @@ class DocumentsView extends View {
         this.fetchDocuments();
 
         this.fetchDocumentsStatistics();
-
-        //функция подсчета статистик
     }
 
     setAnnotation(index, value) {

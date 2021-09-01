@@ -33,7 +33,7 @@
                             <col span="1" style="width: 50%;">
                             <col span="1" style="width: 20%;">
                             <col span="1" style="width: 20%;">
-                            <!--col span="1" style="width: 10%;"-->
+                            <col span="1" style="width: 10%;">
                         </colgroup>
                         <tbody>
                             <th>Название</th>
@@ -44,11 +44,11 @@
                                 <td class="content pointer" th:onclick="documentsView.selectCorpus(this.dataset['id'])" th:text="${corpus.name}" th:attr="data-id=${corpus.id}">Тестовое название</td>
                                 <td class="content">admin</td>
                                 <td class="center content">20.04.2020</td>
-                                <!--td></td-->
+                                <!--td class="content pointer" th:onclick="corporaView.deleteCorpus(this.dataset['id'])" th:text="Удалить"></td-->
                             </tr>
                             <tr>
                                 <!--td class="center" colspan="4">--</td-->
-                                <td class="center" colspan="3">--</td>
+                                <td class="center" colspan="3">--</td-->
                             </tr>
                         </tbody>
                     </table>
@@ -139,6 +139,7 @@
     </div>
     <script>
         const documentsView = new DocumentsView();
+        const corporaView = new CorporaView();
     </script>
 </body>
 </html>
